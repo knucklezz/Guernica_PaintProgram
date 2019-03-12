@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Guernica_PaintProgram"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        MinHeight="380"
+        MinWidth="500"
         
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Button x:Name="btn1" Content="{Binding Btn1Text}" Click="Btn1_Click" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"/>
+        <Button x:Name="btn2" Content="{Binding Btn2Text}" Click="Btn2_Click" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="5"/>
+        <Button x:Name="btn3" Content="{Binding Btn3Text}" Click="Btn3_Click" Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="5"/>
+        <Button x:Name="btn4" Content="{Binding Btn4Text}" Click="Btn4_Click" Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="5"/>
+
+        <Label Content="Stroke: " Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label Content="Fill: " Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <Rectangle x:Name="rect11" Stretch="UniformToFill" Fill="Red" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect12" Stretch="UniformToFill" Fill="Yellow" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect13" Stretch="UniformToFill" Fill="Green" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect14" Stretch="UniformToFill" Fill="Cyan" Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect15" Stretch="UniformToFill" Fill="Blue" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect16" Stretch="UniformToFill" Fill="Violet" Grid.Row="1" Grid.Column="17" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect21" Stretch="UniformToFill" Fill="Violet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect22" Stretch="UniformToFill" Fill="Blue" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect23" Stretch="UniformToFill" Fill="Cyan" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect24" Stretch="UniformToFill" Fill="Green" Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect25" Stretch="UniformToFill" Fill="Yellow" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="rect26" Stretch="UniformToFill" Fill="Red" Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="3"/>
+
+        <Canvas x:Name="drawCanvas"  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="20"/>
+
+        <Label Content="Stroke:" Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Label Content="fill:" Grid.Column="10" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Rectangle x:Name="strokeRect" Stretch="UniformToFill" Fill="{Binding strokeColor}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="10"/>
+        <Rectangle x:Name="fillRect" Stretch="UniformToFill" Fill="{Binding fillColor}" Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="10"/>
+
+
     </Grid>
 </Window>
