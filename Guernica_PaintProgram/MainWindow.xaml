@@ -66,7 +66,6 @@
         <Rectangle x:Name="rect26" Stretch="UniformToFill" Fill="Red" Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="3"/>
 
         <Canvas x:Name="drawCanvas" Background="White" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="20" MouseDown="drawCanvas_MouseDown" MouseMove="drawCanvas_MouseMove" MouseUp="drawCanvas_MouseUp"/>
-        <Canvas x:Name="ghostCanvas" Background="Transparent" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="20" MouseDown="drawCanvas_MouseDown" MouseMove="drawCanvas_MouseMove" MouseUp="drawCanvas_MouseUp"/>
 
         <Label Content="Stroke:" Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Label Content="fill:" Grid.Column="10" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>

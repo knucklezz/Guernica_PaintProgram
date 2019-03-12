@@ -33,9 +33,11 @@ namespace Guernica_PaintProgram
         public string StrokeColor { get { return _strokeColor; } set { _strokeColor = value; } }
         public string FillColor { get { return _fillColor; } set { _fillColor = value; } }
 
+        public Line line = new Line();
         public string DrawObject;
         public Point p1;
         public Point p2;
+        private object currentLine;
 
         public MainWindow()
         {
@@ -96,23 +98,25 @@ namespace Guernica_PaintProgram
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 p1 = e.GetPosition(drawCanvas);
+            p1 = e.GetPosition(drawCanvas);
+           line = new Line();
+            drawCanvas.Children.Add(line);
+            
+            
            
         }
 
         private void drawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            Line currentLine = new Line();
+           
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                ghostCanvas.Children.Clear();
-
-                currentLine.Stroke = System.Windows.Media.Brushes.Black;
-                currentLine.X1 = p1.X;
-                currentLine.Y1 = p1.Y;
-                currentLine.X2 = e.GetPosition(ghostCanvas).X;
-                currentLine.Y2 = e.GetPosition(ghostCanvas).Y;
-
-                ghostCanvas.Children.Add(currentLine);
+                line.Stroke = System.Windows.Media.Brushes.Black;
+                line.X1 = p1.X;
+                line.Y1 = p1.Y;
+                line.X2 = e.GetPosition(drawCanvas).X;
+                line.Y2 = e.GetPosition(drawCanvas).Y;
+                
             }
         }
 
@@ -120,7 +124,7 @@ namespace Guernica_PaintProgram
         {
             if (e.LeftButton == MouseButtonState.Released)
             {
-                Line line = new Line();
+                
 
                 line.Stroke = System.Windows.Media.Brushes.Black;
                 line.X1 = p1.X;
@@ -128,7 +132,7 @@ namespace Guernica_PaintProgram
                 p2 = e.GetPosition(drawCanvas);
                 line.X2 = p2.X;
                 line.Y2 = p2.Y;
-                drawCanvas.Children.Add(line);
+                
             }
            
 
