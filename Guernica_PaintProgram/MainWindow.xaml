@@ -67,7 +67,7 @@
 
         <Canvas x:Name="drawCanvas" Background="White" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="20" MouseDown="drawCanvas_MouseDown" MouseMove="drawCanvas_MouseMove" MouseUp="drawCanvas_MouseUp"/>
 
-        <Label Content="Stroke:" Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <Label x:Name="strokeLabel" Content="Stroke:" Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Label Content="fill:" Grid.Column="10" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
         <Rectangle x:Name="strokeRect" Stretch="UniformToFill" Fill="{Binding strokeColor}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="10"/>
         <Rectangle x:Name="fillRect" Stretch="UniformToFill" Fill="{Binding fillColor}" Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="10"/>

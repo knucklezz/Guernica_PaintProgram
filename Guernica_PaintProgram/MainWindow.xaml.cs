@@ -33,11 +33,14 @@ namespace Guernica_PaintProgram
         public string StrokeColor { get { return _strokeColor; } set { _strokeColor = value; } }
         public string FillColor { get { return _fillColor; } set { _fillColor = value; } }
 
+        //enum  {ellipse, rectangle, line, freeHand}
         public Line line = new Line();
+        public Rectangle rectangle = new Rectangle();
+        public Ellipse ellipse = new Ellipse();
+        
         public string DrawObject;
         public Point p1;
         public Point p2;
-        private object currentLine;
 
         public MainWindow()
         {
@@ -53,8 +56,6 @@ namespace Guernica_PaintProgram
             drawCanvas.MouseDown += drawCanvas_MouseDown;
             drawCanvas.MouseUp += drawCanvas_MouseUp;
             drawCanvas.MouseMove += drawCanvas_MouseMove;
-
-
         }
 
         private void Btn1_Click(object sender, RoutedEventArgs e)
@@ -64,8 +65,9 @@ namespace Guernica_PaintProgram
             btn2.IsEnabled = true;
             btn3.IsEnabled = true;
             btn4.IsEnabled = true;
+            
         }
-
+        
         private void Btn2_Click(object sender, RoutedEventArgs e)
         {
             DrawObject = Btn2Text.ToLower().ToString();
@@ -96,47 +98,118 @@ namespace Guernica_PaintProgram
 
         private void drawCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                p1 = e.GetPosition(drawCanvas);
             p1 = e.GetPosition(drawCanvas);
-           line = new Line();
-            drawCanvas.Children.Add(line);
             
             
-           
+
+            if (DrawObject == Btn1Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {
+                ellipse = new Ellipse
+                {
+                    Fill = new SolidColorBrush(Colors.Red),
+                    Stroke = new SolidColorBrush(Colors.Black),
+                    StrokeThickness = 4
+                    
+                };
+                drawCanvas.Children.Add(ellipse);
+                               
+            }
+            else if (DrawObject == Btn2Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {
+               rectangle = new Rectangle();
+                
+                
+            }
+            else if (DrawObject == Btn3Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {              
+                    line = new Line();
+                
+                    drawCanvas.Children.Add(line);
+            }
+            else if (DrawObject == Btn4Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {
+
+            }
         }
 
         private void drawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-           
-            if (e.LeftButton == MouseButtonState.Pressed)
+
+            if (DrawObject == Btn1Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
             {
+                p2 = e.GetPosition(drawCanvas);
+
+                double minX = Math.Min(p2.X, p1.X);
+                double minY = Math.Min(p2.Y, p1.Y);
+                double maxX = Math.Max(p2.X, p1.X);
+                double maxY = Math.Max(p2.Y, p1.Y);
+
+                
+                double height = maxY - minY;
+                double width = maxX - minX;
+
+                ellipse.Height = Math.Abs(height);
+                ellipse.Width = Math.Abs(width);
+
+                double left = p1.X - (width /2);
+                double top = p1.Y - (height /2);
+
+                
+                ellipse.Margin = new Thickness(left, top, 0, 0);
+
+            }
+            else if (DrawObject == Btn2Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {
+
+            }
+            else if (DrawObject == Btn3Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {
+
                 line.Stroke = System.Windows.Media.Brushes.Black;
                 line.X1 = p1.X;
                 line.Y1 = p1.Y;
                 line.X2 = e.GetPosition(drawCanvas).X;
                 line.Y2 = e.GetPosition(drawCanvas).Y;
+            }
+            else if (DrawObject == Btn4Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Pressed)
+            {
+
+            }
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
                 
             }
         }
 
         private void drawCanvas_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Released)
+            
+            if (DrawObject == Btn1Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Released)
             {
                 
+            }
+            else if (DrawObject == Btn2Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Released)
+            {
 
+            }
+            else if (DrawObject == Btn3Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Released)
+            {
                 line.Stroke = System.Windows.Media.Brushes.Black;
                 line.X1 = p1.X;
                 line.Y1 = p1.Y;
                 p2 = e.GetPosition(drawCanvas);
                 line.X2 = p2.X;
                 line.Y2 = p2.Y;
-                
             }
-           
+            else if (DrawObject == Btn4Text.ToLower().ToString() && e.LeftButton == MouseButtonState.Released)
+            {
+
+            }
+            
+
 
         }
+        
     }
 }
 
