@@ -33,15 +33,17 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="10*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+
+        <Canvas x:Name="drawCanvas" Background="White" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="20" MouseDown="drawCanvas_MouseDown" MouseMove="drawCanvas_MouseMove" />
 
 
         <Button x:Name="btn1" Content="{Binding Btn1Text}" Click="Btn1_Click" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"/>
@@ -49,28 +51,33 @@
         <Button x:Name="btn3" Content="{Binding Btn3Text}" Click="Btn3_Click" Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="5"/>
         <Button x:Name="btn4" Content="{Binding Btn4Text}" Click="Btn4_Click" Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="5"/>
 
-        <Label Content="Stroke: " Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Fill="White"/>
+        <Label  Content="Stroke: " Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Fill="White"/>
         <Label Content="Fill: " Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        
+        <!-- Top Row -->
+        <Rectangle Stretch="UniformToFill" Fill="Red" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6"/>
+        <Button x:Name="StrokeCol_1"  Content="Red" Click="StrokeCol_1_Click" Background="Transparent" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6" />
+        <Rectangle Stretch="UniformToFill" Fill="Yellow" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="6"/>
+        <Button x:Name="StrokeCol_2"  Content="Yellow" Click="StrokeCol_2_Click" Background="Transparent" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="6"/>
+        <Rectangle Stretch="UniformToFill" Fill="Green" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="6"/>
+        <Button x:Name="StrokeCol_3"  Content="Green" Click="StrokeCol_3_Click" Background="Transparent" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="6"/>
+        <!-- Bottom Row -->
+        <Rectangle Stretch="UniformToFill" Fill="Red" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="6"/>
+        <Button x:Name="FillCol_1"  Content="Red" Click="FillCol_1_Click" Background="Transparent" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="6"/>
+        <Rectangle Stretch="UniformToFill" Fill="Yellow"  Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="6"/>
+        <Button x:Name="FillCol_2"  Content="Yellow" Click="FillCol_2_Click" Background="Transparent" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="6"/>
+        <Rectangle Stretch="UniformToFill" Fill="Green" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="6"/>
+        <Button x:Name="FillCol_3"  Content="Green" Click="FillCol_3_Click" Background="Transparent" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="6"/>
 
-        <Rectangle x:Name="rect11" Stretch="UniformToFill" Fill="Red" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect12" Stretch="UniformToFill" Fill="Yellow" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect13" Stretch="UniformToFill" Fill="Green" Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect14" Stretch="UniformToFill" Fill="Cyan" Grid.Row="1" Grid.Column="11" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect15" Stretch="UniformToFill" Fill="Blue" Grid.Row="1" Grid.Column="14" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect16" Stretch="UniformToFill" Fill="Violet" Grid.Row="1" Grid.Column="17" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect21" Stretch="UniformToFill" Fill="Violet" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect22" Stretch="UniformToFill" Fill="Blue" Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect23" Stretch="UniformToFill" Fill="Cyan" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect24" Stretch="UniformToFill" Fill="Green" Grid.Row="2" Grid.Column="11" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect25" Stretch="UniformToFill" Fill="Yellow" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="3"/>
-        <Rectangle x:Name="rect26" Stretch="UniformToFill" Fill="Red" Grid.Row="2" Grid.Column="17" Grid.ColumnSpan="3"/>
-
-        <Canvas x:Name="drawCanvas" Background="White" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="20" MouseDown="drawCanvas_MouseDown" MouseMove="drawCanvas_MouseMove" MouseUp="drawCanvas_MouseUp"/>
-
-        <Label x:Name="strokeLabel" Content="Stroke:" Grid.Column="0" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <Label Content="fill:" Grid.Column="10" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <Rectangle x:Name="strokeRect" Stretch="UniformToFill" Fill="{Binding strokeColor}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="10"/>
-        <Rectangle x:Name="fillRect" Stretch="UniformToFill" Fill="{Binding fillColor}" Grid.Row="5" Grid.Column="10" Grid.ColumnSpan="10"/>
+        <Rectangle Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5" Fill="White"/>
+        <Label x:Name="strokeLabel" Content="Stroke:"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5"  HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Rectangle Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="5" Fill="White"/>
+        <Label Content="fill:"  Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Rectangle x:Name="strokeRect" Stretch="UniformToFill" Fill="{Binding strokeColor}" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="8" />
+        <Rectangle x:Name="fillRect" Stretch="UniformToFill" Fill="{Binding fillColor}" Grid.Row="5" Grid.Column="12" Grid.ColumnSpan="10"/>
+        
 
 
     </Grid>
