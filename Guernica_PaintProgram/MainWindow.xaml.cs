@@ -53,8 +53,6 @@ namespace Guernica_PaintProgram
             drawCanvas.MouseDown += drawCanvas_MouseDown;
             drawCanvas.MouseUp += drawCanvas_MouseUp;
             drawCanvas.MouseMove += drawCanvas_MouseMove;
-
-
         }
 
         private void Btn1_Click(object sender, RoutedEventArgs e)
@@ -96,27 +94,24 @@ namespace Guernica_PaintProgram
 
         private void drawCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed && btn3.IsEnabled == true)
+            {
                 p1 = e.GetPosition(drawCanvas);
-            p1 = e.GetPosition(drawCanvas);
-           line = new Line();
-            drawCanvas.Children.Add(line);
-            
-            
-           
+                p1 = e.GetPosition(drawCanvas);
+                line = new Line();
+                drawCanvas.Children.Add(line);
+            }
         }
 
         private void drawCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-           
-            if (e.LeftButton == MouseButtonState.Pressed)
+            if (e.LeftButton == MouseButtonState.Pressed && btn3.IsEnabled == true)
             {
-                line.Stroke = System.Windows.Media.Brushes.Black;
-                line.X1 = p1.X;
-                line.Y1 = p1.Y;
-                line.X2 = e.GetPosition(drawCanvas).X;
-                line.Y2 = e.GetPosition(drawCanvas).Y;
-                
+                    line.Stroke = Brushes.Black;
+                    line.X1 = p1.X;
+                    line.Y1 = p1.Y;
+                    line.X2 = e.GetPosition(drawCanvas).X;
+                    line.Y2 = e.GetPosition(drawCanvas).Y;
             }
         }
 
@@ -124,9 +119,7 @@ namespace Guernica_PaintProgram
         {
             if (e.LeftButton == MouseButtonState.Released)
             {
-                
-
-                line.Stroke = System.Windows.Media.Brushes.Black;
+                line.Stroke = Brushes.Black;
                 line.X1 = p1.X;
                 line.Y1 = p1.Y;
                 p2 = e.GetPosition(drawCanvas);
@@ -134,8 +127,6 @@ namespace Guernica_PaintProgram
                 line.Y2 = p2.Y;
                 
             }
-           
-
         }
     }
 }
